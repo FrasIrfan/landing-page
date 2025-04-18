@@ -5,34 +5,38 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="py-8 w-full">
-      <div className="container mx-auto flex justify-between items-center px-4 md:px-16 max-w-[1440px]">
-        <div className="flex items-center">
-          <Link href="/" className="flex items-center">
-            <img 
-              src="/assets/logos/Aglivo Logo(large).png"
-              alt="Aglivo Logo"
-              className="h-12 md:h-16 w-auto object-contain"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'block';
-              }}
-            />
-            <span className="text-white text-xl md:text-2xl font-bold hidden">AGLIVO</span>
-          </Link>
-        </div>
-        
-        <div className="hidden md:flex space-x-6 md:space-x-12 items-center">
-          <Link href="/" className="text-white hover:text-gray-300 nav-link uppercase text-sm md:text-base tracking-wider">HOME</Link>
-          <Link href="/about" className="text-white hover:text-gray-300 nav-link uppercase text-sm md:text-base tracking-wider">ABOUT</Link>
-          <Link href="/services" className="text-white hover:text-gray-300 nav-link uppercase text-sm md:text-base tracking-wider">SERVICES</Link>
-          <Link href="/projects" className="text-white hover:text-gray-300 nav-link uppercase text-sm md:text-base tracking-wider">PROJECTS</Link>
-          <Link href="/contact" className="text-white hover:text-gray-300 nav-link uppercase text-sm md:text-base tracking-wider">CONTACT</Link>
-        </div>
-        
-        <button className="bg-white text-black hover:bg-gray-200 rounded-full border border-gray-500 px-6 md:px-8 py-2 md:py-3 text-sm md:text-base font-medium">
-          Let's Talk
-        </button>
+    <nav className="flex justify-center w-full">
+      <div className="w-[320px] sm:w-[400px] md:w-[487px] h-[48px] md:h-[60px] rounded-[80px] md:rounded-[160px] border border-white p-[6px] md:p-[10px] flex items-center justify-center max-w-full overflow-x-auto bg-transparent">
+        <Link
+          href="/"
+          className="font-montserrat font-normal text-[10px] md:text-[12px] leading-[20px] md:leading-[24px] tracking-[-0.1px] uppercase align-middle text-white mx-2 md:mx-4 whitespace-nowrap"
+        >
+          HOME
+        </Link>
+        <Link
+          href="/about"
+          className="font-montserrat font-normal text-[10px] md:text-[12px] leading-[20px] md:leading-[24px] tracking-[-0.1px] uppercase align-middle text-white mx-2 md:mx-4 whitespace-nowrap"
+        >
+          ABOUT
+        </Link>
+        <Link
+          href="/services"
+          className="font-montserrat font-normal text-[10px] md:text-[12px] leading-[20px] md:leading-[24px] tracking-[-0.1px] uppercase align-middle text-white mx-2 md:mx-4 whitespace-nowrap"
+        >
+          SERVICES
+        </Link>
+        <Link
+          href="/projects"
+          className="font-montserrat font-normal text-[10px] md:text-[12px] leading-[20px] md:leading-[24px] tracking-[-0.1px] uppercase align-middle text-white mx-2 md:mx-4 whitespace-nowrap"
+        >
+          PROJECTS
+        </Link>
+        <Link
+          href="/contact"
+          className="font-montserrat font-normal text-[10px] md:text-[12px] leading-[20px] md:leading-[24px] tracking-[-0.1px] uppercase align-middle text-white mx-2 md:mx-4 whitespace-nowrap"
+        >
+          CONTACT
+        </Link>
       </div>
     </nav>
   );

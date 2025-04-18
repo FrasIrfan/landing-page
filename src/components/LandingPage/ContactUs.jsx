@@ -49,7 +49,7 @@ const ContactUs = () => {
                             </div>
                             <div>
                                 <p className="text-sm">Email Us</p>
-                                <p className="text-lg font-semibold">Info@agljivo.com</p>
+                                <p className="text-lg font-semibold">Info@aglivo.com</p>
                             </div>
                         </li>
                     </ul>

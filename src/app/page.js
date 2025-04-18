@@ -1,5 +1,7 @@
 import React from 'react';
 import Navbar from '../components/LandingPage/Navbar';
+import Logo from '../components/LandingPage/Logo';
+import NavButton from '../components/LandingPage/NavButton';
 import Hero from '../components/LandingPage/Hero';
 import Aboutus from '../components/LandingPage/Aboutus';
 import TrustedPartners from '../components/LandingPage/TrustedPartners';
@@ -11,8 +13,25 @@ import Footer from '../components/LandingPage/Footer';
 
 export default function Home() {
   return (
-    <div className="bg-black min-h-screen">
-      <Navbar />
+    <div className="bg-black min-h-screen relative overflow-hidden">
+      {/* Waves background */}
+      <div className="wave-container absolute inset-0 z-0 pointer-events-none">
+        <div className="wave-animation w-full h-full"></div>
+      </div>
+      {/* Header/Nav with higher z-index */}
+      <div className="relative z-10">
+        <div className="flex items-center justify-between w-full px-0 py-4">
+          <div className="pl-6">
+            <Logo />
+          </div>
+          <div className="flex-1 flex justify-center">
+            <Navbar />
+          </div>
+          <div className="pr-6">
+            <NavButton />
+          </div>
+        </div>
+      </div>
       <Hero />
       <Aboutus />
       <TrustedPartners/>

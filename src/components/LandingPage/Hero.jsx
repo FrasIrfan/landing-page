@@ -18,7 +18,13 @@ const Hero = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Email submitted:", email);
-    // Add your email submission logic here
+  };
+
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -55,7 +61,7 @@ const Hero = () => {
         <EmailForm />
 
         {/* Arrow icon */}
-        <div className="mt-16 animate-bounce">
+        <div className="mt-16 animate-bounce cursor-pointer" onClick={scrollToBottom}>
           <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
