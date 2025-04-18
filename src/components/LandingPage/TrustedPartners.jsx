@@ -7,7 +7,7 @@ export default function TrustedPartners() {
     { src: '/assets/logos/spectrasolar.png',   alt: 'Spectra Solar',   w: 80,  h: 80  },
     { src: '/assets/logos/dillion.png',        alt: 'Dillion',         w: 80,  h: 80  },
     { src: '/assets/logos/c17f6aae179ca0fd5a6bff40fa4cea85 1.png',        alt: 'Operita Solar',   w: 60,  h: 60  },
-    { src: '/assets/logos/luminaryHealth.png', alt: 'Luminary Health', w: 150, h: 150 },
+    { src: '/assets/logos/LuminaryHealth.png', alt: 'Luminary Health', w: 150, h: 150 },
     { src: '/assets/logos/Liberty.png',        alt: 'Liberty',         w: 150, h: 150 },
   ]
 
