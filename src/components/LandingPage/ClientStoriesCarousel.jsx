@@ -113,7 +113,7 @@ const ClientStoriesCarousel = () => {
       <div className="relative z-10 w-full max-w-[1590px] mx-auto px-4 py-24">
         {/* Header */}
         <div className="text-center mb-12">
-          <h4 className="text-lg font-medium tracking-wide text-white">
+          <h4 className="text-lg font-medium tracking-wide text-white mb-4">
             S U C C E S S &nbsp; S T O R I E S
           </h4>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white uppercase mb-4 leading-tight">
@@ -144,32 +144,32 @@ const ClientStoriesCarousel = () => {
                 key={review.id}
                 className="flex-none hover:scale-105 ease-in-out bg-opacity-30 backdrop-blur-sm w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] mx-0 p-8 bg-black rounded-xl transition duration-300 hover:shadow-lg shadow-white/10 flex flex-col min-h-[320px]"
               >
-                <div className="mb-4">
+                <div className="mb-[22px] w-[354px] h-[340.26px] flex flex-col gap-[22px]">
                   <Image
                     src="/assets/Icons/quotesicon.png"
                     alt="Quote Icon"
                     width={30}
                     height={30}
                   />
-                </div>
-                <p className="text-white text-sm mb-6 flex-grow">
-                  {review.text}
-                </p>
-                <div className="flex items-center mt-auto">
-                  <div className="w-10 h-10 mr-3 rounded-full overflow-hidden">
-                    <Image
-                      src="/assets/logos/client_logo.png"
-                      alt={review.name}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white text-sm">
-                      {review.name}
-                    </h4>
-                    <p className="text-white text-xs">{review.designation}</p>
+                  <p className="text-white text-sm flex-grow">
+                    {review.text}
+                  </p>
+                  <div className="flex items-center mt-auto">
+                    <div className="w-10 h-10 mr-3 rounded-full overflow-hidden">
+                      <Image
+                        src="/assets/logos/client_logo.png"
+                        alt={review.name}
+                        width={40}
+                        height={40}
+                        className="rounded-full"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white text-sm">
+                        {review.name}
+                      </h4>
+                      <p className="text-white text-xs">{review.designation}</p>
+                    </div>
                   </div>
                 </div>
               </div>
