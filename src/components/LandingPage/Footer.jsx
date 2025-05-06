@@ -1,18 +1,21 @@
-'use client';
-import React from 'react'
-import Image from 'next/image'
+"use client";
+import React from "react";
+import Image from "next/image";
+import fb_logo from "../../../public/assets/logos/fb.png";
+import insta_logo from "../../../public/assets/logos/Instagram.svg";
+import x_logo from "../../../public/assets/logos/twitter.svg";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-white text-black font-[Montserrat] overflow-x-hidden">
+    <footer className="w-full bg-gradient-to-br from-white via-purple-100 to-pink-100 text-black font-[Montserrat] overflow-x-hidden">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between gap-8">
           <div className="flex flex-col items-start space-y-4 ">
-            <div className="flex-shrink-0 mb-28 ml-10 mt-5">
+            <div className="flex-shrink-0  mb-28 ml-10 mt-5">
               <Image
                 src="/assets/logos/footerlogo.png"
                 alt="Footer Logo"
-                width={150} 
+                width={150}
                 height={150}
                 priority
               />
@@ -20,29 +23,29 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mt-10 ml-10">
               <a href="#facebook" aria-label="Facebook">
                 <Image
-                  src="/assets/Icons/facebookicon.png"
+                  src={fb_logo}
                   alt="Facebook"
                   width={30}
                   height={30}
-                  className="object-contain border border-gray-300 p-1.5 rounded-full hover:opacity-80 transition-all"
+                  className="object-contain hover:opacity-80 transition-opacity"
                 />
               </a>
               <a href="#instagram" aria-label="Instagram">
                 <Image
-                  src="/assets/Icons/instagramicon.png"
+                  src={insta_logo}
                   alt="Instagram"
                   width={30}
                   height={30}
-                  className="object-contain border border-gray-300 p-1.5 rounded-full hover:opacity-80 transition-all"
+                  className="object-contain hover:opacity-80 transition-opacity"
                 />
               </a>
               <a href="#twitter" aria-label="Twitter">
                 <Image
-                  src="/assets/Icons/twittericon.png"
+                  src={x_logo}
                   alt="Twitter"
                   width={30}
                   height={30}
-                  className="object-contain border border-gray-300 p-1.5 rounded-full hover:opacity-80 transition-all"
+                  className="object-contain hover:opacity-80 transition-opacity"
                 />
               </a>
             </div>
@@ -85,7 +88,7 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="w-full sm:w-[250px] h-10 px-3 rounded border border-gray-300 text-xs focus:outline-none focus:border-gray-400"
+                  className="w-full sm:w-[250px] placeholder-gray-700 h-10 px-3 rounded border border-gray-300 text-xs text-black  bg-gradient-to-r from-pink-500/30 via-pink-400/20 to-transparent focus:outline-none focus:border-pink-300"
                 />
                 <button className="bg-black text-white h-10 px-4 rounded text-xs hover:bg-gray-800 transition-colors">
                   Subscribe
@@ -95,31 +98,34 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-10">
+          <div className="my-5 text-center text-xs">
+            <p>
+              &copy; 2025 Eloqwnt. All rights reserved
+              <span className="mx-2">•</span>
+              <a href="#privacy" className="hover:underline">
+                Privacy Policy
+              </a>
+            </p>
+          </div>
           <hr className="w-11/12 mx-auto border-t-2 border-gray-300" />
         </div>
         <div className="mt-4 flex justify-center">
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="p-2 hover:bg-gray-200 rounded-full"
             aria-label="Back to Top"
           >
-            <svg className="w-6 h-6 fill-current text-gray-600" viewBox="0 0 20 20">
+            <svg
+              className="w-6 h-6 fill-current text-gray-600"
+              viewBox="0 0 20 20"
+            >
               <polygon points="10,0 0,10 20,10" />
             </svg>
           </button>
         </div>
-        <div className="mt-8 text-center text-xs">
-          <p>
-            &copy; 2025 Eloqwnt. All rights reserved
-            <span className="mx-2">•</span>
-            <a href="#privacy" className="hover:underline">
-              Privacy Policy
-            </a>
-          </p>
-        </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

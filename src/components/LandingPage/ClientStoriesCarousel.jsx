@@ -1,5 +1,6 @@
-'use client';
-import React, { useState, useEffect, useRef } from 'react';
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 const clientReviews = [
   {
@@ -7,36 +8,31 @@ const clientReviews = [
     text: "Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley.",
     name: "Mr Harry Potter",
     designation: "Doctor",
-    image: "/placeholder.svg"
   },
   {
     id: 2,
-    text: "Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley.",
+    text: "Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley.",
     name: "Mr Harry Potter",
     designation: "Doctor",
-    image: "/placeholder.svg"
   },
   {
     id: 3,
-    text: "Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley.",
+    text: "Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley. Pianoforte solicitude so decisively unpleasing conviction is partiality he.",
     name: "Mr Harry Potter",
     designation: "Doctor",
-    image: "/placeholder.svg"
   },
   {
     id: 4,
-    text: "Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley.",
+    text: "Saw sir fat spirit seeing valley. Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan.",
     name: "Mr Harry Potter",
     designation: "Doctor",
-    image: "/placeholder.svg"
   },
   {
     id: 5,
-    text: "Pianoforte solicitude so decisively unpleasing conviction is partiality he. Or particular so diminution entreaties oh do. Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley.",
+    text: "Real he me fond show gave shot plan. Mirth blush linen small hoped way its along. Resolution frequently apartments off all discretion devonshire. Saw sir fat spirit seeing valley. Pianoforte solicitude so decisively.",
     name: "Mr Harry Potter",
     designation: "Doctor",
-    image: "/placeholder.svg"
-  }
+  },
 ];
 
 const ClientStoriesCarousel = () => {
@@ -46,147 +42,168 @@ const ClientStoriesCarousel = () => {
   const [touchEnd, setTouchEnd] = useState(0);
 
   const getVisibleCards = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       if (window.innerWidth < 640) return 1;
       if (window.innerWidth < 1024) return 2;
       return 3;
     }
     return 3;
   };
-  const maxSlides = Math.max(0, clientReviews.length - getVisibleCards());
+
+  const [visibleCards, setVisibleCards] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleCards(getVisibleCards());
+    };
+
+    handleResize(); // Set initial value
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const maxSlides = Math.max(0, clientReviews.length - visibleCards);
+
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
     }, 5000);
     return () => clearInterval(interval);
-  }, [currentSlide]);
+  }, [currentSlide, maxSlides]);
 
   const handleScrollTo = (index) => {
-    if (index < 0) index = 0;
-    if (index > maxSlides) index = maxSlides;
-    setCurrentSlide(index);
+    const clampedIndex = Math.min(Math.max(index, 0), maxSlides);
+    setCurrentSlide(clampedIndex);
     if (carouselRef.current) {
-      const cardWidth = carouselRef.current.offsetWidth / getVisibleCards();
-      carouselRef.current.scrollLeft = index * cardWidth;
+      const cardWidth = carouselRef.current.scrollWidth / clientReviews.length;
+      carouselRef.current.scrollLeft = clampedIndex * cardWidth;
     }
   };
 
   const nextSlide = () => {
-    const newIndex = currentSlide >= maxSlides ? 0 : currentSlide + 1;
-    handleScrollTo(newIndex);
+    handleScrollTo(currentSlide >= maxSlides ? 0 : currentSlide + 1);
   };
 
   const prevSlide = () => {
-    const newIndex = Math.max(0, currentSlide - 1);
-    handleScrollTo(newIndex);
-  };
-  const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
+    handleScrollTo(currentSlide <= 0 ? maxSlides : currentSlide - 1);
   };
 
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
+  const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 100) {
-      nextSlide();
-    }
-    if (touchStart - touchEnd < -100) {
-      prevSlide();
-    }
+    if (touchStart - touchEnd > 100) nextSlide();
+    if (touchStart - touchEnd < -100) prevSlide();
   };
 
   return (
-    <div className="relative w-full overflow-x-hidden bg-white font-['Montserrat'] py-0 pt-8 px-4">
-      <div className="absolute -top-20 -right-20 opacity-50 pointer-events-none select-none z-0">
-        <img 
-          src="/assets/logos/Logogrey.png" 
-          alt="Logo" 
-          width={300} 
-          height={300} 
-          className="transform rotate-[-7deg]" 
+    <div className="relative w-full overflow-hidden bg-gradient-to-r from-[#0b1825] via-[#121829] to-[#280a1e] font-['Montserrat']">
+      {/* Background Logo */}
+      <div className="absolute top-20 -right-20 opacity-50 pointer-events-none select-none z-0">
+        <Image
+          src="/assets/logos/Logogrey.png"
+          alt="Logo"
+          width={300}
+          height={300}
+          className="transform rotate-[-7deg]"
+          priority
         />
       </div>
-      <div className="relative z-10 max-w-[1590px] mx-auto">
-        <div className="text-center mb-8">
-          <h3 className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold tracking-wider text-black uppercase mb-1 leading-tight">
-            SUCCESS STORIES
-          </h3>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-black uppercase mb-4 leading-tight">
+
+      <div className="relative z-10 w-full max-w-[1590px] mx-auto px-4 py-24">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h4 className="text-lg font-medium tracking-wide text-white">
+            S U C C E S S &nbsp; S T O R I E S
+          </h4>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white uppercase mb-4 leading-tight">
             CLIENTS REVIEWS
           </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-normal leading-relaxed mx-auto text-black">
-            Welcome to Aglivo, a community strength and conditioning facility that began in 2019.
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-normal leading-relaxed mx-auto text-white">
+            Welcome to Aglivo, a community strength and conditioning facility
+            that began in 2019.
           </p>
         </div>
+
+        {/* Carousel */}
         <div className="overflow-hidden">
           <div
             ref={carouselRef}
-            style={{ transform: `translateX(-${currentSlide * (100 / getVisibleCards())}%)` }}
-            className="flex transition-transform duration-500 ease-in-out px-4"
+            className="flex transition-transform duration-500 ease-in-out px-4 gap-8"
+            style={{
+              transform: `translateX(-${
+                (currentSlide * 100) / clientReviews.length
+              }%)`,
+            }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             {clientReviews.map((review) => (
-              <div 
+              <div
                 key={review.id}
-                className="flex-none w-[calc(100%-2rem)] sm:w-[calc(50%-2rem)] lg:w-[calc(33.333%-2rem)] min-w-[calc(100%-2rem)] sm:min-w-[calc(50%-2rem)] lg:min-w-[calc(33.333%-2rem)] mx-4 p-4 bg-white rounded-xl border border-gray-300 shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition duration-300 ease-in-out hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
+                className="flex-none  bg-opacity-30 backdrop-blur-sm w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] mx-0 p-8 bg-black rounded-xl transition duration-300 ease-in-out hover:shadow-lg shadow-white/10 flex flex-col min-h-[320px]"
               >
-                <div className="mb-3">
-                  <img 
-                    src="/assets/Icons/iconclientreview.png" 
+                <div className="mb-4">
+                  <Image
+                    src="/assets/Icons/quotesicon.png"
                     alt="Quote Icon"
                     width={30}
                     height={30}
                   />
                 </div>
-                <p className="text-black text-sm leading-relaxed mb-4 line-clamp-7">
+                <p className="text-white text-sm mb-6 flex-grow">
                   {review.text}
                 </p>
                 <div className="flex items-center mt-auto">
                   <div className="w-10 h-10 mr-3 rounded-full overflow-hidden">
-                    <img 
-                      src={review.image} 
-                      alt={review.name} 
+                    <Image
+                      src="/assets/logos/client_logo.png"
+                      alt={review.name}
                       width={40}
                       height={40}
                       className="rounded-full"
                     />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-black text-sm">{review.name}</h4>
-                    <p className="text-black text-xs">{review.designation}</p>
+                    <h4 className="font-semibold text-white text-sm">
+                      {review.name}
+                    </h4>
+                    <p className="text-white text-xs">{review.designation}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Pagination */}
           <div className="flex justify-center mt-6 gap-2">
             {Array.from({ length: maxSlides + 1 }).map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-colors duration-300 ${currentSlide === index ? 'bg-black' : 'bg-gray-300'}`}
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  currentSlide === index ? "bg-white" : "bg-gray-600"
+                }`}
                 onClick={() => handleScrollTo(index)}
+                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
         </div>
-        <div className="-mx-4">
-        <div
-          className="w-screen left-0 relative bg-black mt-8 h-4 sm:h-6 md:h-8 lg:h-10"/>
-        </div>
-        <div className="-mx-4">
-        <div className="w-screen left-0 relative">
-        <img
-          src="/assets/logos/map.png"
-          alt="Location Map"
-          width={1921}
-          height={643}
-          className="block w-full h-auto max-h-[200px] sm:max-h-[300px] md:max-h-[400px] lg:max-h-[600px]"/>
-        </div>
       </div>
+
+      {/* Map Section - Full Width */}
+      <div className="w-full">
+        <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
+          <Image
+            src="/assets/logos/map.png"
+            alt="Location Map"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            className="w-full"
+            priority
+          />
+        </div>
       </div>
     </div>
   );
