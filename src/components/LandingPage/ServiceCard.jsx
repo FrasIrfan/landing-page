@@ -6,7 +6,7 @@ const ServiceCard = ({ service }) => {
   return (
     <>
       <div
-        className="bg-black bg-opacity-30 backdrop-blur-sm rounded-lg p-6 
+        className="bg-black hover:scale-105 ease-in-out bg-opacity-30 backdrop-blur-sm rounded-lg p-6 
                 border border-gray-800 hover:border-blue-400 transition-all 
                 duration-300 shadow-[0_0_15px_rgba(255,255,255,0.15)]"
       >
