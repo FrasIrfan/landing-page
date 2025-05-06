@@ -12,9 +12,9 @@ export default function TrustedPartners() {
   ]
 
   return (
-    <section className="w-full bg-black flex justify-center mt-20">
+    <section className="w-full bg-black flex justify-center mt-28">
       <div className="max-w-7xl w-full flex items-center justify-center px-4 sm:px-8">
-        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-6 sm:gap-x-8 sm:gap-y-8 md:gap-x-10 md:gap-y-10 lg:gap-x-12 lg:gap-y-12 w-full">
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-8 sm:gap-x-10 sm:gap-y-10 md:gap-x-12 md:gap-y-12 lg:gap-x-16 lg:gap-y-16 w-full">
           {logos.map((logo, idx) => (
             <div key={idx} className={`flex items-center justify-center ${logo.tw}`}>
               <Image
