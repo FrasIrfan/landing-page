@@ -27,7 +27,7 @@ const SocialVerticalBar = () => (
     style={{
       width: "32px",
       height: "156px",
-      top: "393px",
+      top: "350px",
       left: "40px",
       zIndex: 50
     }}

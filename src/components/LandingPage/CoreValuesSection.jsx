@@ -8,7 +8,7 @@ export default function CoreValuesSection() {
   const [hoveredCard, setHoveredCard] = useState(null);
 
   return (
-    <section className="w-full py-10 md:py-20 bg-gradient-to-r from-[#300015] via-[#0d0508] to-black">
+    <section className="w-full py-10 md:py-20 bg-gradient-to-br from-[#300015] via-[#0d0508] to-black">
       <div className="px-12">
         <div className="font-montserrat font-semibold text-[22px] leading-[1.6] tracking-[0.6em] text-white mt-6">
           Aglivo Values
@@ -24,7 +24,7 @@ export default function CoreValuesSection() {
           began in 2019.
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <CoreValueCard
               index={0}
