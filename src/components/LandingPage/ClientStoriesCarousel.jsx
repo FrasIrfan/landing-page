@@ -97,7 +97,7 @@ const ClientStoriesCarousel = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden bg-gradient-to-r from-[#0b1825] via-[#121829] to-[#280a1e] font-['Montserrat']">
+    <div className="relative  w-full overflow-hidden bg-gradient-to-r from-[#0b1825] via-[#121829] to-[#280a1e] font-['Montserrat']">
       {/* Background Logo */}
       <div className="absolute top-20 -right-20 opacity-50 pointer-events-none select-none z-0">
         <Image
@@ -126,10 +126,10 @@ const ClientStoriesCarousel = () => {
         </div>
 
         {/* Carousel */}
-        <div className="overflow-hidden">
+        <div className="overflow-hidden ">
           <div
             ref={carouselRef}
-            className="flex transition-transform duration-500 ease-in-out px-4 gap-8"
+            className="flex px-4 gap-8"
             style={{
               transform: `translateX(-${
                 (currentSlide * 100) / clientReviews.length
@@ -142,7 +142,7 @@ const ClientStoriesCarousel = () => {
             {clientReviews.map((review) => (
               <div
                 key={review.id}
-                className="flex-none  bg-opacity-30 backdrop-blur-sm w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] mx-0 p-8 bg-black rounded-xl transition duration-300 ease-in-out hover:shadow-lg shadow-white/10 flex flex-col min-h-[320px]"
+                className="flex-none hover:scale-105 ease-in-out bg-opacity-30 backdrop-blur-sm w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] mx-0 p-8 bg-black rounded-xl transition duration-300 hover:shadow-lg shadow-white/10 flex flex-col min-h-[320px]"
               >
                 <div className="mb-4">
                   <Image

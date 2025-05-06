@@ -1,4 +1,6 @@
+"use client"
 import React from "react";
+import CountUp from "react-countup";
 import analyticsmob_one from "../../../public/assets/logos/analytics_mob1.svg";
 import analyticsmob_two from "../../../public/assets/logos/analytics_mob2.svg";
 import analyticsmob_three from "../../../public/assets/logos/analytics_mob3.svg";
@@ -16,7 +18,7 @@ const CompanyAnalytics = () => {
                 {/* Years of Experience */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    6+ Years
+                    <CountUp end={6} duration={5} suffix="+ Years" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     of market experience
@@ -26,7 +28,7 @@ const CompanyAnalytics = () => {
                 {/* Satisfied Clients */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    100+
+                    <CountUp end={100} duration={5} suffix="+" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     Satisfied Clients
@@ -38,7 +40,7 @@ const CompanyAnalytics = () => {
                 {/* Tasks Organized */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    12M+
+                    <CountUp end={12} duration={5} suffix="M+" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     Tasks Organized
@@ -48,7 +50,7 @@ const CompanyAnalytics = () => {
                 {/* Pro Users */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    76%
+                    <CountUp end={76} duration={5} suffix="%" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     Pro Users
@@ -60,7 +62,7 @@ const CompanyAnalytics = () => {
                 {/* Team Members */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    600+
+                    <CountUp end={600} duration={5} suffix="+" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     Team Members
@@ -71,38 +73,27 @@ const CompanyAnalytics = () => {
 
             {/* App Screenshots Column */}
             <div className="flex justify-center items-center gap-6">
-              {/* Left Phone */}
-              <div className="">
-                <Image
-                  src={analyticsmob_one}
-                  alt="App screenshot 1"
-                  width={220}
-                  height={450}
-                  className="rounded-3xl shadow-lg"
-                />
-              </div>
-
-              {/* Middle Phone */}
-              <div className="">
-                <Image
-                  src={analyticsmob_two}
-                  alt="App screenshot 2"
-                  width={220}
-                  height={450}
-                  className="rounded-3xl shadow-lg"
-                />
-              </div>
-
-              {/* Right Phone */}
-              <div className="">
-                <Image
-                  src={analyticsmob_three}
-                  alt="App screenshot 3"
-                  width={220}
-                  height={450}
-                  className="rounded-3xl shadow-lg"
-                />
-              </div>
+              <Image
+                src={analyticsmob_one}
+                alt="App screenshot 1"
+                width={220}
+                height={450}
+                className="rounded-3xl shadow-lg"
+              />
+              <Image
+                src={analyticsmob_two}
+                alt="App screenshot 2"
+                width={220}
+                height={450}
+                className="rounded-3xl shadow-lg"
+              />
+              <Image
+                src={analyticsmob_three}
+                alt="App screenshot 3"
+                width={220}
+                height={450}
+                className="rounded-3xl shadow-lg"
+              />
             </div>
           </div>
         </div>

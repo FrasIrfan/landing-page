@@ -150,3 +150,7 @@ body {
 .services-card:hover {
   transform: translateY(-5px);
 }
+
+html {
+  scroll-behavior: smooth;
+}
