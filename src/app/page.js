@@ -4,12 +4,14 @@ import Logo from '../components/LandingPage/Logo';
 import NavButton from '../components/LandingPage/NavButton';
 import Hero from '../components/LandingPage/Hero';
 import Aboutus from '../components/LandingPage/Aboutus';
-import TrustedPartners from '../components/LandingPage/TrustedPartners';
+// import TrustedPartners from '../components/LandingPage/TrustedPartners';
 import CoreValuesSection from '../components/LandingPage/CoreValuesSection';
 import ProjectsSection from '../components/LandingPage/ProjectsSection';
 import ClientStoriesCarousel from '../components/LandingPage/ClientStoriesCarousel';
 import ContactUs from '../components/LandingPage/ContactUs';
 import Footer from '../components/LandingPage/Footer';
+import CompanyAnalytics from '../components/LandingPage/CompanyAnalytics';
+import ServicesSolutions from '../components/LandingPage/ServicesSolutions';
 
 export default function Home() {
   return (
@@ -33,13 +35,16 @@ export default function Home() {
         </div>
       </div>
       <Hero />
+      {/* New addition component */}
+      <CompanyAnalytics />
+      {/* New addition component */}
+      <ServicesSolutions />
       <Aboutus />
       <CoreValuesSection />
-      <ProjectsSection/>
-      <ClientStoriesCarousel/>
-      <ContactUs/>
-      <Footer/>
-
+      <ProjectsSection />
+      <ClientStoriesCarousel />
+      <ContactUs />
+      <Footer />
     </div>
   );
 }
