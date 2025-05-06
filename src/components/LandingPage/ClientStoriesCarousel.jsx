@@ -37,7 +37,7 @@ const clientReviews = [
 
 const ClientStoriesCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselRef = useRef(null);
+  const [visibleCards, setVisibleCards] = useState(3);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
@@ -50,15 +50,12 @@ const ClientStoriesCarousel = () => {
     return 3;
   };
 
-  const [visibleCards, setVisibleCards] = useState(3);
-
   useEffect(() => {
     const handleResize = () => {
       setVisibleCards(getVisibleCards());
     };
 
-    handleResize(); // Set initial value
-
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -75,10 +72,6 @@ const ClientStoriesCarousel = () => {
   const handleScrollTo = (index) => {
     const clampedIndex = Math.min(Math.max(index, 0), maxSlides);
     setCurrentSlide(clampedIndex);
-    if (carouselRef.current) {
-      const cardWidth = carouselRef.current.scrollWidth / clientReviews.length;
-      carouselRef.current.scrollLeft = clampedIndex * cardWidth;
-    }
   };
 
   const nextSlide = () => {
@@ -97,7 +90,7 @@ const ClientStoriesCarousel = () => {
   };
 
   return (
-    <div className="relative  w-full overflow-hidden bg-gradient-to-r from-[#0b1825] via-[#121829] to-[#280a1e] font-['Montserrat']">
+    <div className="relative w-full overflow-hidden bg-gradient-to-r from-[#0b1825] via-[#121829] to-[#280a1e] font-['Montserrat']">
       {/* Background Logo */}
       <div className="absolute top-20 -right-20 opacity-50 pointer-events-none select-none z-0">
         <Image
@@ -126,14 +119,12 @@ const ClientStoriesCarousel = () => {
         </div>
 
         {/* Carousel */}
-        <div className="overflow-hidden ">
+        <div className="overflow-hidden px-6">
           <div
-            ref={carouselRef}
-            className="flex px-4 gap-8"
+            className="flex gap-8 transition-transform duration-500 ease-in-out"
             style={{
-              transform: `translateX(-${
-                (currentSlide * 100) / clientReviews.length
-              }%)`,
+              transform: `translateX(-${(currentSlide * 100) / visibleCards}%)`,
+              width: `${(clientReviews.length / visibleCards) * 100}%`,
             }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -142,7 +133,11 @@ const ClientStoriesCarousel = () => {
             {clientReviews.map((review) => (
               <div
                 key={review.id}
-                className="flex-none hover:scale-105 ease-in-out bg-opacity-30 backdrop-blur-sm w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] mx-0 p-8 bg-black rounded-xl transition duration-300 hover:shadow-lg shadow-white/10 flex flex-col min-h-[320px]"
+                className="flex-none  p-8 bg-opacity-30  backdrop-blur-sm  bg-black rounded-xl transition duration-300 shadow-[0_4px_30px_rgba(255,255,255,0.2)] hover:scale-105 hover:shadow-lg shadow-white/10 flex flex-col min-h-[320px]"
+                style={{
+                  flex: `0 0 ${100 / clientReviews.length}%`, // let container width decide
+                  width: `${100 / visibleCards}%`, // full slot width
+                }}
               >
                 <div className="mb-4">
                   <Image
@@ -192,7 +187,7 @@ const ClientStoriesCarousel = () => {
         </div>
       </div>
 
-      {/* Map Section - Full Width */}
+      {/* Map Section */}
       <div className="w-full">
         <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
           <Image

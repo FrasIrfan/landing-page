@@ -1,33 +1,94 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function TrustedPartners() {
   const logos = [
-    { src: '/assets/logos/goalAs1.png',        alt: 'Goal CSL',        w: 95,  h: 62,  tw: 'w-[95px] h-[62px] sm:w-[80px] sm:h-[52px] md:w-[95px] md:h-[62px]' },
-    { src: '/assets/logos/spectrasolar.png',   alt: 'Spectra Solar',   w: 120, h: 72,  tw: 'w-[120px] h-[72px] sm:w-[90px] sm:h-[54px] md:w-[120px] md:h-[72px]' },
-    { src: '/assets/logos/dillion.png',        alt: 'Dillion',         w: 106, h: 76,  tw: 'w-[106px] h-[76px] sm:w-[80px] sm:h-[57px] md:w-[106px] md:h-[76px]' },
-    { src: '/assets/logos/c17f6aae179ca0fd5a6bff40fa4cea85 1.png', alt: 'Operita Solar', w: 68, h: 82, tw: 'w-[68px] h-[82px] sm:w-[50px] sm:h-[60px] md:w-[68px] md:h-[82px]' },
-    { src: '/assets/logos/LuminaryHealth.png', alt: 'Luminary Health', w: 237, h: 63,  tw: 'w-[237px] h-[63px] sm:w-[120px] sm:h-[32px] md:w-[180px] md:h-[48px] lg:w-[237px] lg:h-[63px]' },
-    { src: '/assets/logos/Liberty.png',        alt: 'Liberty',         w: 246, h: 44,  tw: 'w-[246px] h-[44px] sm:w-[120px] sm:h-[22px] md:w-[180px] md:h-[32px] lg:w-[246px] lg:h-[44px]' },
-  ]
+    {
+      src: "/assets/logos/goalAs1.png",
+      alt: "Goal CSL",
+      w: 200,
+      h: 130,
+      tw: "w-[200px] h-[130px] sm:w-[170px] sm:h-[110px] md:w-[200px] md:h-[130px]",
+    },
+    {
+      src: "/assets/logos/spectrasolar.png",
+      alt: "Spectra Solar",
+      w: 240,
+      h: 140,
+      tw: "w-[240px] h-[140px] sm:w-[200px] sm:h-[120px] md:w-[240px] md:h-[140px]",
+    },
+    {
+      src: "/assets/logos/dillion.png",
+      alt: "Dillion",
+      w: 220,
+      h: 160,
+      tw: "w-[220px] h-[160px] sm:w-[180px] sm:h-[130px] md:w-[220px] md:h-[160px]",
+    },
+    {
+      src: "/assets/logos/c17f6aae179ca0fd5a6bff40fa4cea85 1.png",
+      alt: "Operita Solar",
+      w: 160,
+      h: 180,
+      tw: "w-[160px] h-[180px] sm:w-[140px] sm:h-[160px] md:w-[160px] md:h-[180px]",
+    },
+    {
+      src: "/assets/logos/LuminaryHealth.png",
+      alt: "Luminary Health",
+      w: 400,
+      h: 110,
+      tw: "w-[400px] h-[110px] sm:w-[280px] sm:h-[70px] md:w-[350px] md:h-[90px]",
+    },
+    {
+      src: "/assets/logos/Liberty.png",
+      alt: "Liberty",
+      w: 420,
+      h: 80,
+      tw: "w-[420px] h-[80px] sm:w-[280px] sm:h-[50px] md:w-[350px] md:h-[70px]",
+    },
+  ];
 
   return (
-    <section className="w-full bg-black flex justify-center mt-20">
-      <div className="max-w-7xl w-full flex items-center justify-center px-4 sm:px-8">
-        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-6 sm:gap-x-8 sm:gap-y-8 md:gap-x-10 md:gap-y-10 lg:gap-x-12 lg:gap-y-12 w-full">
-          {logos.map((logo, idx) => (
-            <div key={idx} className={`flex items-center justify-center ${logo.tw}`}>
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.w}
-                height={logo.h}
-                className="object-contain w-full h-full"
-              />
+    <section className="w-full bg-black flex justify-center">
+      <div className="w-full flex items-center justify-center px-4 sm:px-8">
+        {/* Parallax effect with Framer Motion */}
+        <motion.div
+          className="flex items-center justify-start gap-x-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-12 w-full"
+          animate={{
+            x: ["0%", "-100%"],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 18, // Smooth duration
+              ease: "easeInOut", // Better easing for natural movement
+            },
+          }}
+        >
+          {logos.concat(logos).map((logo, idx) => (
+            <div
+              key={idx}
+              className={`flex items-center justify-center ${logo.tw} group`}
+              style={{ transition: "transform 0.3s ease-out" }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: -5 }} // Hover effect for logos
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.w}
+                  height={logo.h}
+                  className="object-contain w-full h-full"
+                />
+              </motion.div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }
