@@ -11,7 +11,7 @@ const fadeInUp = {
   animate: { opacity: 1, y: 0 },
 };
 
-const Hero = () => {
+const Hero = ({ span1text, span2text, description }) => {
   const scrollToBottom = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -61,13 +61,12 @@ const Hero = () => {
                       fill="none"
                     />
                   </svg>
-                  <span className="relative z-20">YOUR</span>
+                  <span className="relative z-20">{span1text}</span>
                 </span>
-                <span className="ml-3">VISION, OUR CREATIVITY</span>
               </span>
             </div>
             <div>
-              <span className="relative z-20">DELIVERING CUSTOM SOLUTIONS</span>
+              <span className="relative z-20">{span2text}</span>
             </div>
           </div>
         </motion.h1>
@@ -80,9 +79,7 @@ const Hero = () => {
           animate="animate"
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          We are extensive experience and a strong team.&nbsp;We deliver
-          creative branding, web design, and UI/UX solutions to make the most
-          impact.
+          {description}
         </motion.p>
 
         {/* Downward Arrow */}

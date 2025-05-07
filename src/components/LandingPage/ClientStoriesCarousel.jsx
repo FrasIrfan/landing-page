@@ -257,19 +257,6 @@ const ClientStoriesCarousel = () => {
           </div>
         </div>
       </div>
-
-      <div className="w-full">
-        <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
-          <Image
-            src="/assets/logos/map.png"
-            alt="Location Map"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center" }}
-            className="w-full"
-            priority
-          />
-        </div>
-      </div>
     </div>
   );
 };
