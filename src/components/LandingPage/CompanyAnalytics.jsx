@@ -18,7 +18,7 @@ const CompanyAnalytics = () => {
                 {/* Years of Experience */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    <CountUp end={6} duration={5} suffix="+ Years" />
+                    <CountUp end={6} duration={10} suffix="+ Years" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     of market experience
@@ -28,7 +28,7 @@ const CompanyAnalytics = () => {
                 {/* Satisfied Clients */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    <CountUp end={100} duration={5} suffix="+" />
+                    <CountUp end={100} duration={10} suffix="+" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     Satisfied Clients
@@ -40,7 +40,7 @@ const CompanyAnalytics = () => {
                 {/* Tasks Organized */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    <CountUp end={12} duration={5} suffix="M+" />
+                    <CountUp end={12} duration={10} suffix="M+" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     Tasks Organized
@@ -50,7 +50,7 @@ const CompanyAnalytics = () => {
                 {/* Pro Users */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    <CountUp end={76} duration={5} suffix="%" />
+                    <CountUp end={76} duration={10} suffix="%" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     Pro Users
@@ -62,7 +62,7 @@ const CompanyAnalytics = () => {
                 {/* Team Members */}
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-[#0D0D0D] font-bold">
-                    <CountUp end={600} duration={5} suffix="+" />
+                    <CountUp end={600} duration={10} suffix="+" />
                   </h3>
                   <p className="text-sm text-[#4E4E4E] border-t border-black pt-2">
                     Team Members
