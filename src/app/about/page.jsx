@@ -1,18 +1,18 @@
-
-import React from 'react';
-import Navbar from '../../components/LandingPage/Navbar';
+import React from "react";
+import Hero from "../../components/LandingPage/Hero";
+import { heroContent } from "../../data/Herocontent";
+import AglivoStory from "../../components/AboutPage/AglivoStory";
+import MeetTeam from "../../components/AboutPage/MeetTeam";
+import ChooseAglivo from "../../components/AboutPage/ChooseAglivo";
 
 const About = () => {
   return (
-    <div className="bg-black min-h-screen">
-      <Navbar />
-      <div className="container mx-auto px-4 py-20">
-        <h1 className="text-4xl font-bold text-white mb-8">About Aglivo</h1>
-        <p className="text-gray-300 text-lg">
-          More information about Aglivo...
-        </p>
-      </div>
-    </div>
+    <>
+      <Hero {...heroContent.about} />
+      <AglivoStory />
+      <MeetTeam />
+      <ChooseAglivo/>
+    </>
   );
 };
 
