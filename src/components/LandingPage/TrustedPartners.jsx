@@ -49,31 +49,31 @@ export default function TrustedPartners() {
   ];
 
   return (
-    <section className="w-full bg-black flex justify-center">
-      <div className="w-full flex items-center justify-center px-4 sm:px-8">
-        {/* Parallax effect with Framer Motion */}
+    <section className="w-full bg-black flex flex-col items-center py-16">
+
+      <div className="w-full overflow-hidden flex items-center justify-center px-4 sm:px-8">
         <motion.div
-          className="flex items-center justify-start gap-x-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-12 w-full"
+          className="flex items-center gap-x-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-12 w-max"
           animate={{
-            x: ["0%", "-100%"],
+            x: ["0%", "-50%"],
           }}
           transition={{
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 18, // Smooth duration
-              ease: "easeInOut", // Better easing for natural movement
+              duration: 18,
+              ease: "linear",
             },
           }}
         >
-          {logos.concat(logos).map((logo, idx) => (
+          {[...logos, ...logos].map((logo, idx) => (
             <div
               key={idx}
               className={`flex items-center justify-center ${logo.tw} group`}
               style={{ transition: "transform 0.3s ease-out" }}
             >
               <motion.div
-                whileHover={{ scale: 1.1, rotate: -5 }} // Hover effect for logos
+                whileHover={{ scale: 1.1, rotate: -5 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
